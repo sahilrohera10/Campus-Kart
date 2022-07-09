@@ -88,7 +88,7 @@ export default function ProductReview() {
               <div className="flex">
                 <img
                   style={{ width: "200px" }}
-                  src={`http://localhost:4000/uploads/${imageId}`}
+                  src={`https://campus-kart.herokuapp.com/uploads/${imageId}`}
                   alt="A black chair with wooden legs"
                 />
               </div>

@@ -47,7 +47,7 @@ export default function EditProduct({ data }) {
         body: JSON.stringify(body),
       };
       const resp = await fetch(
-        "http://localhost:4000/product/updateProduct",
+        "https://campus-kart.herokuapp.com/product/updateProduct",
         requestOptions
       );
 

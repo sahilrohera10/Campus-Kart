@@ -49,7 +49,9 @@ const ProductGrid = () => {
     e.preventDefault();
     console.log("in search");
     try {
-      await fetch(`http://localhost:4000/product/get/${category}/${college}`)
+      await fetch(
+        `https://campus-kart.herokuapp.com/product/get/${category}/${college}`
+      )
         //  await fetch("http://localhost:3790/product/all")
         .then((resp) => resp.json())
         .then((resp) => {
@@ -71,7 +73,7 @@ const ProductGrid = () => {
     console.log("in fetcher");
     try {
       // fetch(`http://localhost:3790/product/get/${Category}/${college}`)
-      fetch("http://localhost:4000/product/all")
+      fetch("https://campus-kart.herokuapp.com/product/all")
         .then((resp) => resp.json())
         .then((resp) => {
           // window.location.reload(false);
@@ -114,7 +116,7 @@ const ProductGrid = () => {
         body: JSON.stringify(body),
       };
       const resp = await fetch(
-        "http://localhost:4000/addprodinWishlist",
+        "https://campus-kart.herokuapp.com/addprodinWishlist",
         requestOptions
       );
       // .then((resp) => {
@@ -254,7 +256,7 @@ const ProductGrid = () => {
                 >
                   <Card.Img
                     variant="top"
-                    src={`http://localhost:4000/uploads/${data.imageId}`}
+                    src={`https://campus-kart.herokuapp.com/uploads/${data.imageId}`}
                   />
                   <Card.Body>
                     <Card.Title>Title: {data.productName}</Card.Title>

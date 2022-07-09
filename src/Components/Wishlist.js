@@ -10,7 +10,7 @@ export default function Wishlist() {
     console.log("in fetcher");
     const id = localStorage.getItem("id");
     try {
-      fetch(`http://localhost:4000/getProdfromWishlist/${id}`)
+      fetch(`https://campus-kart.herokuapp.com/getProdfromWishlist/${id}`)
         .then((resp) => resp.json())
         .then((resp) => {
           console.log("data=>", resp);
@@ -28,7 +28,7 @@ export default function Wishlist() {
         headers: { "Content-Type": "application/json" },
       };
       const resp = await fetch(
-        `http://localhost:4000/deleteprodfromwishlist/${data.customerId}/${data.productId}`,
+        `https://campus-kart.herokuapp.com/deleteprodfromwishlist/${data.customerId}/${data.productId}`,
         requestOptions
       );
 
@@ -87,7 +87,7 @@ export default function Wishlist() {
                     <th>
                       <img
                         className="my-10 pl-4 lg:pl-10 2xl:pl-20"
-                        src={`http://localhost:4000/uploads/${data.imgId}`}
+                        src={`https://campus-kart.herokuapp.com/uploads/${data.imgId}`}
                         alt="shoe"
                       />
                     </th>
@@ -154,7 +154,7 @@ export default function Wishlist() {
                     <div className="px-4 flex flex-col jusitfy-center items-start mt-10">
                       <div>
                         <img
-                          src={`http://localhost:4000/uploads/${data.imgId}`}
+                          src={`https://campus-kart.herokuapp.com/uploads/${data.imgId}`}
                           alt="shoe"
                         />
                       </div>

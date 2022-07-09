@@ -90,7 +90,7 @@ export default function LoginRegister() {
 
     try {
       const rep1 = await fetch(
-        "http://localhost:4000/sendmail",
+        "https://campus-kart.herokuapp.com/sendmail",
         requestOptions
       );
       if (rep1.ok) {
@@ -124,7 +124,7 @@ export default function LoginRegister() {
 
     try {
       const rep1 = await fetch(
-        "http://localhost:4000/Register",
+        "https://campus-kart.herokuapp.com/Register",
         requestOptions
       );
       if (rep1.status === 300) {
@@ -163,7 +163,10 @@ export default function LoginRegister() {
     };
 
     try {
-      const rep1 = await fetch("http://localhost:4000/Login", requestOptions);
+      const rep1 = await fetch(
+        "https://campus-kart.herokuapp.com/Login",
+        requestOptions
+      );
       rep1.json().then((data) => {
         console.log("data =>", data.pass);
 

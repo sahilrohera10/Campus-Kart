@@ -4,13 +4,16 @@ const MyContext = React.createContext([{}, () => {}]);
 
 function UserContext(props) {
   async function loadUserData(email) {
-    let data = await fetch(`http://localhost:4000/get/user/${email}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: ` Bearer ${email}`,
-      },
-    });
+    let data = await fetch(
+      `https://campus-kart.herokuapp.com/get/user/${email}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: ` Bearer ${email}`,
+        },
+      }
+    );
 
     let finalData = await data.json();
     console.log("useContext", finalData);

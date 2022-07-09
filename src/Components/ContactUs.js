@@ -38,7 +38,7 @@ export default function ContactUs() {
 
     try {
       const resp1 = await fetch(
-        "http://localhost:4000/contactmail",
+        "https://campus-kart.herokuapp.com/contactmail",
         requestOptions
       );
 

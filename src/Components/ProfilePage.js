@@ -19,7 +19,7 @@ export default function ProfilePage() {
         headers: { "Content-Type": "application/json" },
       };
       const resp = await fetch(
-        `http://localhost:4000/DeleteAccount/${id}`,
+        `https://campus-kart.herokuapp.com/DeleteAccount/${id}`,
         requestOptions
       );
 

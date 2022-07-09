@@ -127,7 +127,7 @@ const CategoryProductGrid = () => {
                 >
                   <Card.Img
                     variant="top"
-                    src={`http://localhost:4000/uploads/${data.imageId}`}
+                    src={`https://campus-kart.herokuapp.com/uploads/${data.imageId}`}
                   />
                   <Card.Body>
                     <Card.Title>Title: {data.productName}</Card.Title>

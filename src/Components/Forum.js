@@ -30,7 +30,7 @@ export default function Forum() {
 
     try {
       const resp1 = await fetch(
-        "http://localhost:4000/AddRequest",
+        "https://campus-kart.herokuapp.com/AddRequest",
         requestOptions
       );
 

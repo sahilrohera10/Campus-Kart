@@ -32,7 +32,9 @@ const MyProducts = () => {
   useLayoutEffect(() => {
     console.log("in fetcher");
     try {
-      fetch(`http://localhost:4000/products/get/myProducts/${sellerId}`)
+      fetch(
+        `https://campus-kart.herokuapp.com/products/get/myProducts/${sellerId}`
+      )
         .then((resp) => resp.json())
         .then((resp) => {
           console.log("data=>", resp);
@@ -52,7 +54,7 @@ const MyProducts = () => {
         headers: { "Content-Type": "application/json" },
       };
       const resp = await fetch(
-        `http://localhost:4000/product/delete/${id}`,
+        `https://campus-kart.herokuapp.com/product/delete/${id}`,
         requestOptions
       );
 
@@ -147,7 +149,7 @@ const MyProducts = () => {
                 >
                   <Card.Img
                     variant="top"
-                    src={`http://localhost:4000/uploads/${data.imageId}`}
+                    src={`https://campus-kart.herokuapp.com/uploads/${data.imageId}`}
                   />
                   <Card.Body>
                     <Card.Title>Title: {data.productName}</Card.Title>

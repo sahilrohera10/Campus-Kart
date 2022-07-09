@@ -46,7 +46,10 @@ const AddProduct = () => {
 
     console.log("image data => ", image);
 
-    await axios.post("http://localhost:4000/product/upload", formData);
+    await axios.post(
+      "https://campus-kart.herokuapp.com/product/upload",
+      formData
+    );
     // navigate("/myProducts");
     window.location.reload();
     alert("product uploaded");
