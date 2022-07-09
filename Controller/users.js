@@ -88,10 +88,23 @@ async function Register(req, res, next) {
 async function sendMAil(req, res, next) {
   try {
     const val = Math.floor(1000 + Math.random() * 9000);
-    const data = await otps.create({
-      emailid: req.body.Email,
-      otp: val,
-    });
+    const user = await otps.find({ emailid: req.body.Email });
+    if(user){
+     await otps.updateOne(
+{emailid:req.body.Email},
+{ otp:val  }
+
+     );
+console.log("here");
+    }else{
+      await otps.create({
+        emailid: req.body.Email,
+        otp: val,
+      });
+console.log("there");
+
+    }
+   
 
     const tranporter = nodemailer.createTransport({
       service: "gmail",
@@ -119,7 +132,7 @@ async function sendMAil(req, res, next) {
       }
     });
 
-    console.log("data entered : ", data);
+    // console.log("data entered : ", data);
 
     return res.status(200).json({ message: "mail sent succesfully" });
   } catch (error) {
