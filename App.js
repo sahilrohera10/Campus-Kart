@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const PORT = process.env.PORT || 4000;
+
 const cors = require("cors");
 
 dotenv.config();
@@ -21,6 +23,6 @@ app.use("/uploads", express.static("./ImgUploads"));
 const Routes = require("./Routes/apiRoutes");
 app.use("/", Routes);
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log("server started and running on port 4000");
 });
