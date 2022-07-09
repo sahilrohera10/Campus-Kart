@@ -4,6 +4,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const product = require("../models/productsData");
 const path = require("path");
 const multer = require("multer");
+const wishlist = require("../models/wishlist");
 
 module.exports = {
   uploadProduct,
@@ -98,6 +99,7 @@ async function uploadProduct(req, res, next) {
 async function deleteProduct(req, res, next) {
   try {
     await product.deleteOne({ _id: req.params.productId });
+    await wishlist.deleteOne({ _id: req.params.productId });
 
     return res.status(200).send("product deleted successfully");
   } catch (error) {
@@ -137,6 +139,17 @@ async function updateProductDetails(req, res, next) {
     // const id = ObjectId(req.body.productId);
 
     await product.updateOne(
+      { _id: req.body.productId },
+      {
+        productName: req.body.productName,
+        price: req.body.price,
+        category: req.body.category,
+        description: req.body.description,
+        contactNumber: req.body.contactNumber,
+      }
+      // { where: { _id: id } }
+    );
+    await wishlist.updateOne(
       { _id: req.body.productId },
       {
         productName: req.body.productName,
