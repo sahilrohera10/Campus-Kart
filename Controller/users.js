@@ -59,7 +59,7 @@ async function Register(req, res, next) {
     const Secpassword = await bcrypt.hash(req.body.Password, salt);
     const votp = await otps.findOne({ emailid: req.body.Email });
 
-    console.log("votp->", votp.otp);
+    // console.log("votp->", votp.otp);
 
     const botp = req.body.otp;
 
