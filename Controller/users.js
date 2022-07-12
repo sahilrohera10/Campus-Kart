@@ -104,15 +104,15 @@ async function sendMAil(req, res, next) {
       service: "gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: "campuskart05@gmail.com",
-        pass: "tbiqxiuxllqrzviu",
+        user: "contact.technomaits@gmail.com",
+        pass: "qhtpgbivqupkszzf",
       },
     });
 
     const mailOptions = {
-      from: "campuskart05@gmail.com",
+      from: "contact.technomaits@gmail.com",
       to: req.body.Email,
-      subject: "otp for user verification",
+      subject: "CAMPUS KART - otp for user verification",
       text: `please enter this otp ${val} with your given email id.`,
     };
 
