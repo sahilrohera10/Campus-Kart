@@ -128,7 +128,7 @@ async function sendMAil(req, res, next) {
 
     // console.log("data entered : ", data);
 
-    return res.status(200).json({ message: "mail sent succesfully" });
+    // return res.status(200).json({ message: "mail sent succesfully" });
   } catch (error) {
     console.log("error : ", error);
     return res.status(400).json({ message: error });
