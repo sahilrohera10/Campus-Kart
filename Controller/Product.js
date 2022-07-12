@@ -29,7 +29,8 @@ async function uploadProduct(req, res, next) {
     var storage = multer.diskStorage({
       destination: function (req, file, cb) {
         // Uploads is the Upload_folder_name
-        cb(null, "ImgUploads");
+        cb(null, "./ImgUploads");
+        // cb(null, path.join(__dirname, "/ImgUploads/"));
       },
       filename: function (req, file, cb) {
         cb(null, file.fieldname + "-" + Date.now() + ".jpg");
