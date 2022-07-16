@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4002;
 
 const cors = require("cors");
 
@@ -29,5 +29,5 @@ const Routes = require("./Routes/apiRoutes");
 app.use("/", Routes);
 
 app.listen(PORT, () => {
-  console.log("server started and running on port 4001");
+  console.log("server started and running on port 4002");
 });
