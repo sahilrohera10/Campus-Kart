@@ -6,11 +6,6 @@ const PORT = process.env.PORT || 4002;
 
 const cors = require("cors");
 
-var corsOptions = {
-  origin: "https://campus-kart.vercel.app/",
-  optionsSuccessStatus: 200, // For legacy browser support
-};
-
 dotenv.config();
 
 mongoose
@@ -19,7 +14,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 
