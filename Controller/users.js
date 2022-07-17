@@ -89,14 +89,14 @@ async function sendMAil(req, res, next) {
   try {
     const val = Math.floor(1000 + Math.random() * 9000);
     const user = await otps.find({ emailid: req.body.Email });
-    if (user) {
-      await otps.updateOne({ emailid: req.body.Email }, { otp: val });
-      console.log("here");
-    } else {
+    if (!user) {
       await otps.create({
         emailid: req.body.Email,
         otp: val,
       });
+      console.log("here");
+    } else {
+      await otps.updateOne({ emailid: req.body.Email }, { otp: val });
       console.log("there");
     }
 
