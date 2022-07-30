@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 const product = require("../models/productsData");
+const wishlist = require("../models/wishlist");
 const path = require("path");
 const multer = require("multer");
 
