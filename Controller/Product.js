@@ -37,7 +37,7 @@ async function uploadProduct(req, res, next) {
       },
     });
 
-    const maxSize = 1 * 2000 * 2000;
+    const maxSize = 10 * 2000 * 2000;
 
     var upload = multer({
       storage: storage,
