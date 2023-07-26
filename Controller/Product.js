@@ -13,13 +13,40 @@ module.exports = {
   getAllMyProducts,
   updateProductDetails,
   getAllProducts,
+  addInFeaturedProduct
 };
 
 async function getAllProducts(req, res, next) {
   try {
-    const data = await product.find();
+    const { newly_added, featured_product } = req.query;
+    let filter = {};
+    if (newly_added === 'true') {
+      filter.newly_added = true;
+    }
+    if (featured_product === 'true') {
+      filter.featured_product = true;
+    }
+    const data = await product.find(filter);
     return res.status(200).json({ data });
   } catch (error) {
+    console.log("error=>", error);
+    return next(error);
+  }
+}
+
+async function addInFeaturedProduct(req,res,next){
+
+  try{
+     const product = await product.find({ _id: req.params.productId });
+     if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    product.featured_product = true;
+    await product.save();
+
+    return res.status(200).json({ message: "Product is now featured." }); 
+  }catch(error){
     console.log("error=>", error);
     return next(error);
   }
