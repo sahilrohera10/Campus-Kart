@@ -12,7 +12,7 @@ async function updateNewlyAddedField() {
   
     try {
       const productsToUpdate = await product.find({
-        createdAt: { $lt: twoDaysAgo },
+        createdAt: { $lt: date },
         newly_added: true,
       });
   

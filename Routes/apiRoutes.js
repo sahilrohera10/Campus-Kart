@@ -32,7 +32,7 @@ router.get(
 router.get("/products/get/myProducts/:sellerId", product.getAllMyProducts);
 router.get("/product/all", product.getAllProducts);
 router.put("/product/updateProduct", product.updateProductDetails);
-router.put("/set-featured/:productId" , product.addInFeaturedProduct);
+router.put("/set-featured/:productId" , product.addInFeaturedProduct);  
 
 //FORUM APIS
 
