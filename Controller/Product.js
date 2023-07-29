@@ -12,12 +12,13 @@ module.exports = {
   getProductsByCategory,
   getAllMyProducts,
   updateProductDetails,
-  getAllProducts,
+  getProducts,
 };
 
-async function getAllProducts(req, res, next) {
+async function getProducts(req, res, next) {
+  const pid = req.query.pid;
   try {
-    const data = await product.find();
+    const data = pid ? await product.find({ _id: pid }) : await product.find();
     return res.status(200).json({ data });
   } catch (error) {
     console.log("error=>", error);
