@@ -25,7 +25,8 @@ router.get(
 );
 
 router.get("/products/get/myProducts/:sellerId", product.getAllMyProducts);
-router.get("/product/all", product.getAllProducts);
+router.get("/product/get", product.getProducts);
+router.get("/product/byFeature" ,product.getProductsByfeature);
 router.put("/product/updateProduct", product.updateProductDetails);
 router.put("/set-featured/:productId", product.addInFeaturedProduct);
 

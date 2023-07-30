@@ -12,21 +12,33 @@ module.exports = {
   getProductsByCategory,
   getAllMyProducts,
   updateProductDetails,
-  getAllProducts,
-  addInFeaturedProduct
+  getProductsByfeature,
+  addInFeaturedProduct,
+  getProducts,
 };
 
-async function getAllProducts(req, res, next) {
+async function getProductsByfeature(req,res,next){
+  const {newly_added , featured_product} = req.query;
+  let filter ={};
   try {
-    const { newly_added, featured_product } = req.query;
-    let filter = {};
-    if (newly_added === 'true') {
-      filter.newly_added = true;
+    if(newly_added == 'true' ){
+      filter.newly_added =true;
     }
-    if (featured_product === 'true') {
-      filter.featured_product = true;
+    if(featured_product == 'true'){
+      filter.featured_product =true;
     }
     const data = await product.find(filter);
+    return res.status(200).json({data});
+  } catch (error) {
+    console.log("error=>", error);
+    return next(error);
+  }
+}
+
+async function getProducts(req, res, next) {
+  const pid = req.query.pid;
+  try {
+    const data = pid ? await product.find({ _id: pid }) : await product.find();
     return res.status(200).json({ data });
   } catch (error) {
     console.log("error=>", error);
