@@ -8,17 +8,12 @@ const user = require("../Controller/users");
 
 router.post("/sendmail", user.sendMAil);
 router.post("/Register", user.Register);
-router.post("/Login", user.Login);
+// router.post("/Login", user.Login);
 router.get("/get/user/:emailId", user.getUserByEmailId);
 // router.put("/profile/update", register.updateProfile);
 
 router.post("/contactmail", user.sendmailforcontact);
 router.delete("/DeleteAccount/:id", user.Deleteaccount);
-// router.put("/sendotpforpass", register.sendotpforgetpass);
-// router.post("/ForgotPassword", register.Forgotpassword);
-// router.put("/UpdatePassword", register.UpdatePassword);
-// router.put("/Sendotpchangepassword", register.sendotpChangepassword);
-// router.post("/ChangePassword", register.ChangePassword);
 
 //PRODUCT APIS
 
@@ -32,7 +27,7 @@ router.get(
 router.get("/products/get/myProducts/:sellerId", product.getAllMyProducts);
 router.get("/product/all", product.getAllProducts);
 router.put("/product/updateProduct", product.updateProductDetails);
-router.put("/set-featured/:productId" , product.addInFeaturedProduct);  
+router.put("/set-featured/:productId", product.addInFeaturedProduct);
 
 //FORUM APIS
 
