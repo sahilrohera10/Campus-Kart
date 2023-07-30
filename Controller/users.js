@@ -43,15 +43,17 @@ async function Register(req, res, next) {
   try {
     const user = await Users.findOne({ email: req.body.Email });
     if (user) {
-      console.log(" Already registered ");
-      return res.status(300).json({ message: "already registered" });
+      const responseObj = {
+        message: 'already registered',
+        id: user._id,
+      };
+      return res.status(409).json(responseObj);
     }
       const data = await Users.create({
         email: req.body.Email,
         name: req.body.Name,
         profileImage:req.body.ProfileImage
       });
-      console.log("data entered :", data);
       const responseObj = {
         message: 'register done',
         id: data._id,
