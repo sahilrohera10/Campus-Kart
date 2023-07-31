@@ -10,7 +10,19 @@ const productSchema = new mongoose.Schema({
   contactNumber: Number,
   collegeName: String,
   ActiveStatus: String,
-  SoldStatus: String,
+  SoldStatus: String, 
+  newly_added: {
+    type: Boolean,
+    default: true, 
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  featured_product: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("product", productSchema);
