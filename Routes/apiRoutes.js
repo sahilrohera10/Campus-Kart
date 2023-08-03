@@ -9,7 +9,7 @@ const user = require("../Controller/users");
 router.post("/sendmail", user.sendMAil);
 router.post("/Register", user.Register);
 // router.post("/Login", user.Login);
-router.get("/get/user/:emailId", user.getUserByEmailId);
+router.get("/get/user/:id", user.getUserById);
 // router.put("/profile/update", register.updateProfile);
 
 router.post("/contactmail", user.sendmailforcontact);
