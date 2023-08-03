@@ -11,7 +11,7 @@ module.exports = {
   sendMAil,
   sendmailforcontact,
   Deleteaccount,
-  getUserByEmailId,
+  getUserById,
 };
 
 async function updateProfile(req, res, next) {
@@ -29,10 +29,10 @@ async function updateProfile(req, res, next) {
   }
 }
 
-async function getUserByEmailId(req, res, next) {
+async function getUserById(req, res, next) {
   try {
-    const data = await Users.findOne({ email: req.params.emailId });
-    return res.status(200).json({ data });
+    const data = await Users.findOne({ _id: req.params.id });
+    return res.status(200).json({data: data});
   } catch (error) {
     console.log("error => ", error);
     return next(error);
