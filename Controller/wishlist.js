@@ -19,12 +19,6 @@ async function AddprodinWishlist(req, res, next) {
       const data = await Wishlist.create({
         customerId: customerId,
         productId: productId,
-        productName: req.body.productName,
-        description: req.body.description,
-        price: req.body.price,
-        imgId: req.body.imgId,
-        category: req.body.category,
-        contactNumber: req.body.contactNumber,
       });
       console.log("product entererd in wishlist :", data);
       return res.status(200).json("product added");
@@ -37,8 +31,27 @@ async function AddprodinWishlist(req, res, next) {
 
 async function getprodfromwishlist(req, res, next) {
   try {
-    const Id = ObjectId(req.params.id);
-    const data = await Wishlist.find({ customerId: Id });
+    const userId = ObjectId(req.params.id);
+    console.log(userId);
+    const data = await Wishlist.aggregate([
+      {
+        $match:{
+          customerId:userId
+        },
+      },
+      {
+        $lookup:{
+          from:"products",
+          localField:"productId",
+          foreignField:"_id",
+          as:"productList"
+        },
+      },
+      {
+        $unwind:"$productList",
+      },
+    ]);
+    console.log(data);
 
     return res.status(200).json(data);
   } catch (err) {
