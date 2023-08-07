@@ -15,6 +15,7 @@ module.exports = {
   getProductsByfeature,
   addInFeaturedProduct,
   getProducts,
+  UpdateSoldStatus,
 };
 
 async function getProductsByfeature(req,res,next){
@@ -23,10 +24,12 @@ async function getProductsByfeature(req,res,next){
   try {
     if(newly_added == 'true' ){
       filter.newly_added =true;
+      filter.SoldStatus=false;
     }
     if(featured_product == 'true'){
       filter.featured_product =true;
     }
+    
     const data = await product.find(filter);
     return res.status(200).json({data});
   } catch (error) {
@@ -38,7 +41,7 @@ async function getProductsByfeature(req,res,next){
 async function getProducts(req, res, next) {
   const pid = req.query.pid;
   try {
-    const data = pid ? await product.find({ _id: pid }) : await product.find();
+    const data = pid ? await product.find({ _id: pid }) : await product.find({SoldStatus: false});
     return res.status(200).json({ data });
   } catch (error) {
     console.log("error=>", error);
@@ -153,6 +156,7 @@ async function getProductsByCategory(req, res, next) {
     const data = await product.find({
       category: req.params.category,
       collegeName: req.params.collegeName,
+      SoldStatus:false,
     });
 
     return res.status(200).json({ data });
@@ -190,17 +194,17 @@ async function updateProductDetails(req, res, next) {
       // { where: { _id: id } }
     );
 
-    await wishlist.updateOne(
-      { _id: req.body.productId },
-      {
-        productName: req.body.productName,
-        price: req.body.price,
-        category: req.body.category,
-        description: req.body.description,
-        contactNumber: req.body.contactNumber,
-      }
-      // { where: { _id: id } }
-    );
+    // await wishlist.updateOne(
+    //   { _id: req.body.productId },
+    //   {
+    //     productName: req.body.productName,
+    //     price: req.body.price,
+    //     category: req.body.category,
+    //     description: req.body.description,
+    //     contactNumber: req.body.contactNumber,
+    //   }
+    //   // { where: { _id: id } }
+    // );
 
     return res.status(200).json({ message: "updated successfully" });
   } catch (error) {
@@ -208,6 +212,21 @@ async function updateProductDetails(req, res, next) {
     return next(error);
   }
 }
+
+//sold status
+async  function UpdateSoldStatus(req,res){
+  try {
+    await product.updateOne(
+      {_id : req.body.productId},{
+        SoldStatus: req.body.SoldStatus,
+      }
+    )
+    return res.status(200).json({message: "sold status updated"});
+  } catch (error) {
+    return res.status(400).json({error :error });
+  }
+}
+
 
 // async function getAllCompo(req, res, next) {
 //   try {

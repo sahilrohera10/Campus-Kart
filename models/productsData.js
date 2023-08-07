@@ -10,7 +10,10 @@ const productSchema = new mongoose.Schema({
   contactNumber: Number,
   collegeName: String,
   ActiveStatus: String,
-  SoldStatus: String, 
+  SoldStatus:{
+    type:Boolean ,
+    default:false ,
+  },
   newly_added: {
     type: Boolean,
     default: true, 
