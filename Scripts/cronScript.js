@@ -1,14 +1,13 @@
-const cron  = require("node-cron");
 const product = require("../models/productsData");
+const schedule = require('node-schedule')
 
 module.exports = {
   updateNewlyAddedField,
-  removeFeaturedProduct
 };
 
 async function updateNewlyAddedField() {
     const date = new Date();
-    date.setDate(date.getDate() - 2);
+    date.setDate(date.getDate() - 10);
   
     try {
       const productsToUpdate = await product.find({
@@ -27,31 +26,20 @@ async function updateNewlyAddedField() {
     }
   }
 
-  async function removeFeaturedProduct() {
-    const date = new Date();
-    date.setDate(date.getDate() - 30);
-  
-    try {
-      const productsToUpdate = await product.find({
-        featured_product: true,
-        createdAt: { $lt: date },
-      });
-  
-      for (const product of productsToUpdate) {
-        product.featured_product = false;
-        await product.save();
-      }
-  
-      console.log("Successfully removed featured_product flag for products.");
-    } catch (error) {
-      console.error("Error while removing featured_product flag:", error);
-    }
-  }
+
   
   
-  cron.schedule("0 0 * * *", () => {
-    updateNewlyAddedField();
-    removeFeaturedProduct();
-  });
+
+
+  const rule = new schedule.RecurrenceRule();
+  rule.hour = 0; // 0 represents 12:00 AM (midnight)
+  
+
+const jobTime = new Date();
+jobTime.setUTCHours(rule.hour);
+jobTime.setUTCMinutes(rule.minute);
+const job = schedule.scheduleJob(rule, () => {
+  updateNewlyAddedField();
+});
   
   
