@@ -29,6 +29,7 @@ router.get("/product/get", product.getProducts);
 router.get("/product/byFeature" ,product.getProductsByfeature);
 router.put("/product/updateProduct", product.updateProductDetails);
 router.put("/set-featured/:productId", product.addInFeaturedProduct);
+router.put("/product/updatesoldStatus" ,product.UpdateSoldStatus);
 
 //FORUM APIS
 
