@@ -18,20 +18,20 @@ module.exports = {
   UpdateSoldStatus,
 };
 
-async function getProductsByfeature(req,res,next){
-  const {newly_added , featured_product} = req.query;
-  let filter ={};
+async function getProductsByfeature(req, res, next) {
+  const { newly_added, featured_product } = req.query;
+  let filter = {};
   try {
-    if(newly_added == 'true' ){
-      filter.newly_added =true;
-      filter.SoldStatus=false;
+    if (newly_added == "true") {
+      filter.newly_added = true;
+      filter.SoldStatus = false;
     }
-    if(featured_product == 'true'){
-      filter.featured_product =true;
+    if (featured_product == "true") {
+      filter.featured_product = true;
     }
-    
+
     const data = await product.find(filter);
-    return res.status(200).json({data});
+    return res.status(200).json({ data });
   } catch (error) {
     console.log("error=>", error);
     return next(error);
@@ -41,7 +41,9 @@ async function getProductsByfeature(req,res,next){
 async function getProducts(req, res, next) {
   const pid = req.query.pid;
   try {
-    const data = pid ? await product.find({ _id: pid }) : await product.find({SoldStatus: false});
+    const data = pid
+      ? await product.find({ _id: pid })
+      : await product.find({ SoldStatus: false });
     return res.status(200).json({ data });
   } catch (error) {
     console.log("error=>", error);
@@ -49,19 +51,18 @@ async function getProducts(req, res, next) {
   }
 }
 
-async function addInFeaturedProduct(req,res,next){
-
-  try{
-     const product = await product.find({ _id: req.params.productId });
-     if (!product) {
+async function addInFeaturedProduct(req, res, next) {
+  try {
+    const product = await product.find({ _id: req.params.productId });
+    if (!product) {
       return res.status(404).json({ error: "Product not found." });
     }
 
     product.featured_product = true;
     await product.save();
 
-    return res.status(200).json({ message: "Product is now featured." }); 
-  }catch(error){
+    return res.status(200).json({ message: "Product is now featured." });
+  } catch (error) {
     console.log("error=>", error);
     return next(error);
   }
@@ -156,7 +157,7 @@ async function getProductsByCategory(req, res, next) {
     const data = await product.find({
       category: req.params.category,
       collegeName: req.params.collegeName,
-      SoldStatus:false,
+      SoldStatus: false,
     });
 
     return res.status(200).json({ data });
@@ -214,19 +215,19 @@ async function updateProductDetails(req, res, next) {
 }
 
 //sold status
-async  function UpdateSoldStatus(req,res){
+async function UpdateSoldStatus(req, res) {
   try {
     await product.updateOne(
-      {_id : req.body.productId},{
+      { _id: req.body.productId },
+      {
         SoldStatus: req.body.SoldStatus,
       }
-    )
-    return res.status(200).json({message: "sold status updated"});
+    );
+    return res.status(200).json({ message: "sold status updated" });
   } catch (error) {
-    return res.status(400).json({error :error });
+    return res.status(400).json({ error: error });
   }
 }
-
 
 // async function getAllCompo(req, res, next) {
 //   try {
