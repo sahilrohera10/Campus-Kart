@@ -10,7 +10,7 @@ router.post("/sendmail", user.sendMAil);
 router.post("/Register", user.Register);
 // router.post("/Login", user.Login);
 router.get("/get/user/:id", user.getUserById);
-// router.put("/profile/update", register.updateProfile);
+router.put("/profile/update", user.updateCollegeName);
 
 router.post("/contactmail", user.sendmailforcontact);
 router.delete("/DeleteAccount/:id", user.Deleteaccount);

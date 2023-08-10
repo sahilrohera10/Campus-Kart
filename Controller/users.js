@@ -12,17 +12,19 @@ module.exports = {
   sendmailforcontact,
   Deleteaccount,
   getUserById,
+  updateCollegeName,
 };
 
-async function updateProfile(req, res, next) {
+async function updateCollegeName(req, res, next) {
+  console.log(req.body);
   try {
     const data = await Users.update(
-      { name: req.body.name, email: req.body.email },
-      {
-        where: { id: req.body.id },
-      }
+      { _id: req.body.id },
+      {  collegeName : req.body.collegeName}
+      
     );
-    return res.status(200).send("update successfully");
+    console.log(data);
+    return res.status(200).json({data:data});
   } catch (error) {
     console.log("error : ", error);
     return next(error);
