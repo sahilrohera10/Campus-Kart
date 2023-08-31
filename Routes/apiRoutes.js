@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const product = require("../Controller/product");
-const wishlist = require("../Controller/wishlist");
-const forum = require("../Controller/forum");
-const user = require("../Controller/users");
+const product = require("../Controller/product.js");
+const wishlist = require("../Controller/wishlist.js");
+const forum = require("../Controller/forum.js");
+const user = require("../Controller/users.js");
 
 //USER APIS
 

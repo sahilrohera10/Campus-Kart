@@ -7,7 +7,6 @@ const Rollbar = require("rollbar");
 const Routes = require("./Routes/apiRoutes");
 const ChatRoute = require("./Routes/chatRoute");
 const MessageRoute = require("./Routes/messageRoute");
-
 const cors = require("cors");
 
 dotenv.config();
