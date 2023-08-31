@@ -1,4 +1,4 @@
-const ChatModel = require("../Models/ChatModel");
+const ChatModel = require("../models/chatModel");
 
 module.exports = {
   createChat,
