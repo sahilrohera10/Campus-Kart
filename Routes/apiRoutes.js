@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const product = require("../Controller/product.js");
-const wishlist = require("../Controller/wishlist.js");
+const product = require("../Controller/Product.js");
+const wishlist = require("../Controller/Wishlist.js");
 const forum = require("../Controller/forum.js");
-const user = require("../Controller/users.js");
+const user = require("../Controller/Users.js");
 
 //USER APIS
 
@@ -33,8 +33,8 @@ router.put("/product/updatesoldStatus", product.UpdateSoldStatus);
 
 //FORUM APIS
 
-router.post("/AddRequest", forum.AddForum);
-router.get("/ShowAllRequest", forum.GetAllForum);
+// router.post("/AddRequest", forum.AddForum);
+// router.get("/ShowAllRequest", forum.GetAllForum);
 
 //WISHLIST APIS
 

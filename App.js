@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const PORT = process.env.PORT || 4002;
 const Rollbar = require("rollbar");
-const Routes = require("./Routes/apiRoutes");
-const ChatRoute = require("./Routes/chatRoute");
-const MessageRoute = require("./Routes/messageRoute");
+const Routes = require("./Routes/ApiRoutes");
+const ChatRoute = require("./Routes/ChatRoute");
+const MessageRoute = require("./Routes/MessageRoute");
 const cors = require("cors");
 
 dotenv.config();
