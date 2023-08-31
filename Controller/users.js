@@ -1,6 +1,6 @@
 const otps = require("../models/otp");
 // const { users } = require("../../models/users");
-const Users = require("../models/users");
+const Users = require("../models/Users");
 const express = require("express");
 const nodemailer = require("nodemailer");
 
