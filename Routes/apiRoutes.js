@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const product = require("../Controller/Product");
+const product = require("../Controller/product");
 const wishlist = require("../Controller/wishlist");
 const forum = require("../Controller/forum");
 const user = require("../Controller/users");
@@ -26,10 +26,10 @@ router.get(
 
 router.get("/products/get/myProducts/:sellerId", product.getAllMyProducts);
 router.get("/product/get", product.getProducts);
-router.get("/product/byFeature" ,product.getProductsByfeature);
+router.get("/product/byFeature", product.getProductsByfeature);
 router.put("/product/updateProduct", product.updateProductDetails);
 router.put("/set-featured/:productId", product.addInFeaturedProduct);
-router.put("/product/updatesoldStatus" ,product.UpdateSoldStatus);
+router.put("/product/updatesoldStatus", product.UpdateSoldStatus);
 
 //FORUM APIS
 

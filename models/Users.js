@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   // password: String,
   collegeName: String,
   // otp: Number,
-  profileImage:String,
+  profileImage: String,
 });
 
-module.exports = mongoose.model("Users", UserSchema);
+module.exports = mongoose.model("users", UserSchema);

@@ -1,6 +1,6 @@
 const otps = require("../models/otp");
 // const { users } = require("../../models/users");
-const Users = require("../models/Users");
+const Users = require("../models/users");
 const express = require("express");
 const nodemailer = require("nodemailer");
 
@@ -20,11 +20,10 @@ async function updateCollegeName(req, res, next) {
   try {
     const data = await Users.update(
       { _id: req.body.id },
-      {  collegeName : req.body.collegeName}
-      
+      { collegeName: req.body.collegeName }
     );
     console.log(data);
-    return res.status(200).json({data:data});
+    return res.status(200).json({ data: data });
   } catch (error) {
     console.log("error : ", error);
     return next(error);
@@ -34,7 +33,7 @@ async function updateCollegeName(req, res, next) {
 async function getUserById(req, res, next) {
   try {
     const data = await Users.findOne({ _id: req.params.id });
-    return res.status(200).json({data: data});
+    return res.status(200).json({ data: data });
   } catch (error) {
     console.log("error => ", error);
     return next(error);
@@ -46,22 +45,22 @@ async function Register(req, res, next) {
     const user = await Users.findOne({ email: req.body.Email });
     if (user) {
       const responseObj = {
-        message: 'already registered',
+        message: "already registered",
         id: user._id,
       };
       return res.status(409).json(responseObj);
     }
-      const data = await Users.create({
-        email: req.body.Email,
-        name: req.body.Name,
-        profileImage:req.body.ProfileImage
-      });
-      const responseObj = {
-        message: 'register done',
-        id: data._id,
-      };
-      res.status(200).json(responseObj);
-      return next();
+    const data = await Users.create({
+      email: req.body.Email,
+      name: req.body.Name,
+      profileImage: req.body.ProfileImage,
+    });
+    const responseObj = {
+      message: "register done",
+      id: data._id,
+    };
+    res.status(200).json(responseObj);
+    return next();
   } catch (error) {
     console.log("error : ", error);
     return next(error);
@@ -109,8 +108,6 @@ async function sendMAil(req, res, next) {
   }
 }
 
-
-
 async function sendmailforcontact(req, res, next) {
   try {
     const tranporter = nodemailer.createTransport({
@@ -154,9 +151,3 @@ async function Deleteaccount(req, res, next) {
     return next(error);
   }
 }
-
-
-
-
-
-
